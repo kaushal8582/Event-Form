@@ -13,6 +13,8 @@ const EventRegistrationForm = () => {
 
   const [errors,validate] = useFormValidation(userData,attendingWithGuest)
 
+  console.log(errors);
+
   const handleCheckboxChange = (value) => {
     setAttendingWithGuest(value);
   };
@@ -20,14 +22,12 @@ const EventRegistrationForm = () => {
   const submitForm = (e) => {
     e.preventDefault();
     
-    if(!validate()){
-      setShowSummary(false);
-    }else{
+    if(validate()){
       setShowSummary(true);
+    }else{
+      setShowSummary(false);
     }
 
-   
-    
   };
 
   const closeSummary = () => {
